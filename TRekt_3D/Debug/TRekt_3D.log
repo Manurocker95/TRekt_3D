@@ -1,0 +1,11 @@
+﻿C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\Common7\IDE\VC\VCTargets\Microsoft.Cpp.props(31,3): warning MSB4011: "C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\Common7\IDE\VC\VCTargets\Microsoft.Makefile.props" cannot be imported again. It was already imported at "C:\Program Files (x86)\MSBuild\Microsoft.Cpp\v4.0\V140\Microsoft.cpp.props (31,3)". This is most likely a build authoring error. This subsequent import will be ignored. [D:\Juegos WiiU y 3DS\3DS & WiiU\3DS\Homebrews\TRekt_3D\TRekt_3D\TRekt_3D.vcxproj]
+  clean ...
+  /bin/sh: WiiU/3DS/Homebrews/TRekt_3D/TRekt_3D/Juegos: No such file or directory
+  ./TRekt_3D.3dsx: ./TRekt_3D.3dsx: cannot execute binary file
+  ./TRekt_3D.smdh: ./TRekt_3D.smdh: cannot execute binary file
+  ./TRekt_3D.elf: ./TRekt_3D.elf: cannot execute binary file
+  /bin/sh: TRekt_3D.3ds: command not found
+  make: *** [clean] Error 127
+  ./TRekt_3D-strip.elf: ./TRekt_3D-strip.elf: cannot execute binary file
+  ./TRekt_3D.cia: ./TRekt_3D.cia: cannot execute binary file
+C:\Program Files (x86)\MSBuild\Microsoft.Cpp\v4.0\V140\Microsoft.MakeFile.Targets(36,5): error MSB3073: The command "make clean" exited with code 2.
