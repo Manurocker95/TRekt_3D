@@ -56,6 +56,8 @@ public:
 	u16 getFrameSize();
 	void reset();
 	bool CheckCollision(Dinosaur* d);
+	bool hasToAddPoints();
+	void setAdding(bool value);
 private:
 	int m_x, m_originalX;
 	int m_y, m_originalY;
@@ -70,6 +72,7 @@ private:
 	bool m_invincible;						// Si el modo invencible está activado o no	
 	sf2d_texture * m_sprite;
 	MState m_state;
+	bool adding;
 };
 
 #endif

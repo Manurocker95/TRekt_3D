@@ -1,4 +1,6 @@
 #include "Dino.h"
+#include <stdlib.h>     /* srand, rand */
+#include <time.h>       /* time */
 
 /* This file is part of T-Rekt 3D!
 
@@ -42,6 +44,7 @@ Dinosaur::Dinosaur(int x, u16 y, bool multipleFrames, u16 numFrames, u16 sizePer
 	m_moving = false;
 	m_male = male;
 	m_sprite = sfil_load_PNG_file(IMG_DINO_SPRITE, SF2D_PLACE_RAM);
+	m_movement = rand() % DINOSAURMOVEMENT + 1;
 }
 
 Dinosaur::Dinosaur(int x, u16 y, sf2d_texture * sprite, bool multipleFrames, u16 numFrames, u16 sizePerFrame, u16 sizeYPerFrame, bool male)
@@ -65,6 +68,50 @@ Dinosaur::Dinosaur(int x, u16 y, sf2d_texture * sprite, bool multipleFrames, u16
 	m_male = male;
 	m_age = 0;
 	m_sizeYPerFrame = sizeYPerFrame;
+	m_movement = (rand() % (DINOSAURMOVEMENT - 1)) + 1;
+}
+
+Dinosaur::Dinosaur(int x, u16 y, sf2d_texture * sprite, bool multipleFrames, u16 numFrames, u16 sizePerFrame, u16 sizeYPerFrame, bool male, bool alive)
+{
+	m_x = x;
+	m_originalX = x;
+	m_y = y;
+	m_originalY = y;
+	m_sprite = sprite;
+	m_multipleFrames = multipleFrames;
+	m_numFrames = numFrames;
+	m_sizePerFrame = sizePerFrame;
+	m_currentFrame = 0;
+	m_secondaryCounter = 0;
+	m_invincible = false;
+	m_offsetFrameX = 0;
+	m_startingYOffset = 0;
+	m_stage = 0;
+	m_moving = false;
+	m_male = male;
+	m_age = 0;
+	m_sizeYPerFrame = sizeYPerFrame;
+	m_movement = (rand() % (DINOSAURMOVEMENT-1)) + 1;
+
+	if (alive)
+		m_state = ALIVE;
+	else
+		m_state = DEAD;
+}
+
+bool Dinosaur::isMale()
+{
+	return m_male;
+}
+
+bool Dinosaur::canProcreate()
+{
+	if ((m_male && m_state == ALIVE && m_age >= AGETOBEADULTMALE && m_age % AGEFORSEX == 0) || (!m_male && m_state == ALIVE && m_age >= AGETOBEADULTFEMALE && m_age % AGEFORSEX == 0))
+	{
+		return true;
+	}
+
+	return false;
 }
 
 Dinosaur::~Dinosaur()
@@ -219,7 +266,7 @@ void Dinosaur::move(int value, u16 dir)
 		}
 	}
 
-	m_x += value*DINOSAURMOVEMENT;
+	m_x += value*m_movement;
 
 	if (m_x > TOP_WIDTH)
 	{
@@ -333,6 +380,12 @@ void Dinosaur::reset()
 	m_sizeYPerFrame = 26;
 	m_startingYOffset = 0;
 	m_stage = 0;
+	m_movement = (rand() % (DINOSAURMOVEMENT - 1)) + 1;
+}
+
+bool Dinosaur::isAlive()
+{
+	return (m_state == ALIVE);
 }
 
 u16 Dinosaur::getSizeYPerFrame()

@@ -48,6 +48,9 @@
 //Meteorite settings
 #define NUMOFMETEOS 10
 #define METEORITEMOVEMENT 3
+#define METEORITESCORE 1
 
 //Max bg frame rate
 #define BGFRAMECOUNTER 9
+
+//Score per meteo

@@ -62,7 +62,7 @@ public:
 	void DieByAge();
 	void goToTitle();
 	void EndGame();
-
+	void procreate();
 private:
 
 	SCREEN m_screen;
@@ -76,6 +76,8 @@ private:
 	u32 m_score, m_maxScore;			// Current score and Max Score
 	u32 m_timeToStartGame = 200;		// Max time for starting game
 	u32 m_timerToGame;					// Count down timer to start game (Ready? Go!)
+	u32 m_timeToFall = 150;		// Max time for starting game
+	u32 m_timerToFall;					// Count down timer to start game (Ready? Go!)
 	u32 held;
 	touchPosition touch;
 	sf2d_texture *m_bgTop,*m_bgBot;		// Background images
@@ -91,6 +93,8 @@ private:
 	sftd_font* font, *font2;			// Main Font, Font 2
 	u32 m_meteoPositions [10];
 	bool m_numOfDeath;
+	bool m_maleAlive, m_femaleAlive;
+	int dinosAlive;
 };
 
 #endif

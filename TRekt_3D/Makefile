@@ -132,6 +132,14 @@ ifneq ($(ROMFS),)
 	export _3DSXFLAGS += --romfs=$(CURDIR)/$(ROMFS)
 endif
 
+ifeq ($(OS),Windows_NT)
+    MAKEROM    = $(TOPDIR)/tools/makerom.exe
+    BANNERTOOL = $(TOPDIR)/tools/bannertool.exe
+else
+    MAKEROM    = $(TOPDIR)/tools/makerom
+    BANNERTOOL = $(TOPDIR)/tools/bannertool
+endif
+
 .PHONY: $(BUILD) clean all
 
 #---------------------------------------------------------------------------------
@@ -154,6 +162,7 @@ cci: $(TARGET)-strip.elf
 	@echo "built ... 3ds"
 #---------------------------------------------------------------------------------
 cia: $(TARGET)-strip.elf
+	@cd $(CURDIR)
 	@makerom -f cia -o $(TARGET).cia -elf $(TARGET)-strip.elf -rsf resources/$(TARGET).rsf -icon resources/icon.icn -banner resources/banner.bnr -exefslogo -target t
 	@echo "built ... cia"
 #---------------------------------------------------------------------------------

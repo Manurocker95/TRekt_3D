@@ -41,6 +41,7 @@ Meteorite::Meteorite(int x, int y, sf2d_texture * sprite, bool multipleFrames, u
 	m_state = STAY;
 	m_offsetFrameX = 0;
 	m_moving = false;
+	adding = false;
 }
 
 Meteorite::~Meteorite()
@@ -91,12 +92,23 @@ void Meteorite::Update()
 			m_y = -50;
 			m_moving = false;
 			m_state = STAY;
+			adding = true;
 		}
 		else
 		{
 			m_y += METEORITEMOVEMENT;
 		}
 	}
+}
+
+bool Meteorite::hasToAddPoints()
+{
+	return adding;
+}
+
+void Meteorite::setAdding(bool add)
+{
+	adding = add;
 }
 
 void Meteorite::moveToCoord(int x, int y)
@@ -108,11 +120,8 @@ void Meteorite::moveToCoord(int x, int y)
 ///summary: Si n
 void Meteorite::Fall()
 {
-	if (!m_moving)
-	{
-		m_moving = true;
-		m_state = FALL;
-	}
+	m_moving = true;
+	m_state = FALL;
 }
 
 sf2d_texture* Meteorite::getSprite()
@@ -214,5 +223,5 @@ void Meteorite::reset()
 
 bool Meteorite::CheckCollision(Dinosaur* d)
 {
-	return (m_x < d->getX() + d->getFrameSize() && m_x + m_sizePerFrame > d->getX() && m_y < d->getY() + d->getSizeYPerFrame() && m_y + 47 > d->getY());
+	return (d->isAlive() && m_x < d->getX() + d->getFrameSize() && m_x + m_sizePerFrame > d->getX() && m_y < d->getY() + d->getSizeYPerFrame() && m_y + 47 > d->getY());
 }

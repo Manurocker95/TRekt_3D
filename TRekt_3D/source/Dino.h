@@ -33,6 +33,7 @@ public:
 	Dinosaur();
 	Dinosaur(int x, u16 y, bool multipleFrames, u16 numFrames, u16 sizePerFrame, bool male);
 	Dinosaur(int x, u16 y, sf2d_texture* sprite, bool multipleFrames, u16 numFrames, u16 sizePerFrame, u16 sizeYPerFrame, bool male);
+	Dinosaur(int x, u16 y, sf2d_texture* sprite, bool multipleFrames, u16 numFrames, u16 sizePerFrame, u16 sizeYPerFrame, bool male, bool alive);
 	~Dinosaur();
 	void Draw(float offset);
 	bool Update();
@@ -57,6 +58,9 @@ public:
 	void reset();
 	u16 getSizeYPerFrame();
 	void Die();
+	bool isMale();
+	bool canProcreate();
+	bool isAlive();
 private:
 	int m_x, m_originalX;
 	u16 m_y, m_originalY;
@@ -69,6 +73,7 @@ private:
 	u16 m_startingYOffset;
 	u16 m_stage;
 	u32 m_age;
+	u32 m_movement;
 	bool m_male;
 	bool m_moving;
 	bool m_multipleFrames;

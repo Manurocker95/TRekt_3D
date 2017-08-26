@@ -38,6 +38,9 @@ GameScreen::~GameScreen()
 	delete m_playBtn;
 	delete m_pauseBtn;
 	delete m_resetBtn;
+	delete m_dinoSM;
+	delete m_dinoSF;
+	delete m_meteoSp;
 }
 
 void GameScreen::Start()
@@ -48,6 +51,7 @@ void GameScreen::Start()
 	m_gameStarted = false;
 	m_timerToGame = 0;
 	m_score = 0;
+	dinosAlive = STARTINGDINOSAURS;
 
 	// We will use 2 channels for sounds: 1 = BGM, 2= Sound effects so they can be played at same time. You can set as channels as you want.
 	// We clear the channels
@@ -63,7 +67,7 @@ void GameScreen::Start()
 	m_bgOffsetX = 0;
 	m_bgCounter = 0;
 	m_bgFrame = 0;
-
+	m_meteosFalling = false;
 	m_dinoSM = sfil_load_PNG_file(IMG_DINO_SPRITE, SF2D_PLACE_RAM);
 	m_dinoSF = sfil_load_PNG_file(IMG_DINO_SPRITE_F, SF2D_PLACE_RAM);
 	m_meteoSp = sfil_load_PNG_file(IMG_METEO_SPRITE, SF2D_PLACE_RAM);
@@ -72,17 +76,31 @@ void GameScreen::Start()
 
 	m_players.reserve(MAXNUMBEROFDINOS);
 
-	for (int i = 0; i < STARTINGDINOSAURS; i++)
+	for (int i = 0; i < MAXNUMBEROFDINOS; i++)
 	{
 		u16 gender = rand() % 100;
-		
-		if (gender % 2 == 0)
+
+		if (i < MAXNUMBEROFDINOS / 2)
 		{
-			m_players.push_back(new Dinosaur(100 + m_space, 200, m_dinoSM, true, 4, 20, 26, true));
+			if (gender % 2 == 0)
+			{
+				m_players.push_back(new Dinosaur(100 + m_space, 200, m_dinoSM, true, 4, 20, 26, true));
+			}
+			else
+			{
+				m_players.push_back(new Dinosaur(100 + m_space, 200, m_dinoSF, true, 4, 20, 26, false));
+			}
 		}
 		else
 		{
-			m_players.push_back(new Dinosaur(100 + m_space, 200, m_dinoSF, true, 4, 20, 26, false));
+			if (gender % 2 == 0)
+			{
+				m_players.push_back(new Dinosaur(100 + m_space, 200, m_dinoSM, true, 4, 20, 26, true, false));
+			}
+			else
+			{
+				m_players.push_back(new Dinosaur(100 + m_space, 200, m_dinoSF, true, 4, 20, 26, false, false));
+			}
 		}
 
 		m_space += PIXELSBETWEENDINOS;
@@ -167,7 +185,7 @@ void GameScreen::Draw()
 			dino->Draw(0);
 
 		// Vector of Meteorites
-		for (const auto& meteo : m_meteos)
+		for (const auto & meteo : m_meteos)
 			meteo->Draw(0);
 
 		sf2d_draw_texture(m_ground, 0, HEIGHT - 14);
@@ -367,6 +385,33 @@ void GameScreen::Update()
 			}
 			else
 			{
+				if (!m_meteosFalling)
+				{
+					m_timerToFall++;
+
+					if (m_timerToFall >= m_timeToFall)
+					{
+						m_timerToFall = 0;
+						m_meteosFalling = true;
+
+						u16 met = rand() % NUMOFMETEOS;
+
+						m_meteos.at(met)->Fall();
+					}
+				}
+				
+				for (const auto & meteo : m_meteos)
+				{
+					meteo->Update();
+
+					if (meteo->hasToAddPoints())
+					{
+						m_meteosFalling = false;
+						meteo->setAdding(false);
+						m_score += METEORITESCORE;
+					}
+				}
+
 				for (const auto & dino : m_players)
 				{
 					if (dino->getState() != Dinosaur::DEAD)
@@ -375,6 +420,7 @@ void GameScreen::Update()
 						{
 							dino->Die();
 							m_numOfDeath++;
+							dinosAlive--;
 						}
 						else
 						{
@@ -384,14 +430,31 @@ void GameScreen::Update()
 								{
 									dino->Die();
 									m_numOfDeath++;
+									dinosAlive--;
 									break;
 								}
 							}
+
+							if (!m_maleAlive && dino->isMale() && dino->canProcreate())
+							{
+								m_maleAlive = true;
+							}
+
+							if (!m_femaleAlive && !dino->isMale() && dino->canProcreate())
+							{
+								m_femaleAlive = true;
+							}
+
 						}
+					}
+
+					if (m_maleAlive && m_femaleAlive)
+					{
+						procreate();
 					}
 				}
 
-				if (m_numOfDeath >= STARTINGDINOSAURS)
+				if (dinosAlive <= 0)
 				{
 					EndGame();
 					return;
@@ -399,6 +462,32 @@ void GameScreen::Update()
 			}
 		}
 	}
+}
+
+void GameScreen::procreate()
+{
+	m_maleAlive = false;
+	m_femaleAlive = false;
+	m_score += 5;
+	m_numOfDeath -= 1;
+	dinosAlive += 1;
+
+	u16 dinos = rand() % MAXNUMBEROFDINOS;
+	bool ret = false;
+
+	for (const auto & dino : m_players)
+	{
+		if (!dino->isMale())
+		{
+			m_players.at(dinos)->reset();
+			m_players.at(dinos)->setX(dino->getX() + PIXELSBETWEENDINOS);
+			ret = true;
+		}
+
+		if (ret)
+			break;
+	}
+
 }
 
 void GameScreen::CheckInputs()
@@ -445,7 +534,9 @@ void GameScreen::CheckInputs()
 				return;
 			}
 		}
+
 		break;
+
 	case GAME:
 
 		if (m_pause)
@@ -479,6 +570,8 @@ void GameScreen::CheckInputs()
 				{
 					if (hidKeysDown() & KEY_DOWN)
 					{
+						m_meteosFalling = true;
+
 						for (const auto & meteo : m_meteos)
 							meteo->Fall();
 					}
@@ -548,15 +641,24 @@ void GameScreen::ResetGame()
 	m_bgOffsetX = 0;
 	m_bgCounter = 0;
 	m_bgFrame = 0;
-
+	m_meteosFalling = false;
+	dinosAlive = STARTINGDINOSAURS;
 	m_gameStarted = false;
 	m_pause = false;
 	m_numOfDeath = 0;
 	m_screen = GAME;
 
+	int i = 0;
+
 	// Vector of Dinosaurs
 	for (const auto& dino : m_players)
-		dino->reset();
+	{
+		if (i < MAXNUMBEROFDINOS / 2)
+		{
+			dino->reset();
+			i++;
+		}
+	}
 
 	// Vector of Meteorites
 	for (const auto& meteo : m_meteos)
