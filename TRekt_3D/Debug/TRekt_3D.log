@@ -1,4 +1,6 @@
 ﻿C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\Common7\IDE\VC\VCTargets\Microsoft.Cpp.props(31,3): warning MSB4011: "C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\Common7\IDE\VC\VCTargets\Microsoft.Makefile.props" cannot be imported again. It was already imported at "C:\Program Files (x86)\MSBuild\Microsoft.Cpp\v4.0\V140\Microsoft.cpp.props (31,3)". This is most likely a build authoring error. This subsequent import will be ignored. [D:\Github\TRekt_3D\TRekt_3D\TRekt_3D.vcxproj]
+  Dino.cpp
+  arm-none-eabi-g++ -MMD -MP -MF /d/Github/TRekt_3D/TRekt_3D/build/Dino.d -g -Wall -O2 -mword-relocations -fomit-frame-pointer -ffunction-sections -march=armv6k -mtune=mpcore -mfloat-abi=hard -mtp=soft -I/d/Github/TRekt_3D/TRekt_3D/include -I/c/devkitPro/libctru/include -I/c/devkitPro/portlibs/armv6k/include -I/c/devkitPro/portlibs/3ds/include -I/d/Github/TRekt_3D/TRekt_3D/build -DARM11 -D_3DS -fno-rtti -fno-exceptions -std=gnu++11 -c /d/Github/TRekt_3D/TRekt_3D/source/Dino.cpp -o Dino.o 
   Game.cpp
   arm-none-eabi-g++ -MMD -MP -MF /d/Github/TRekt_3D/TRekt_3D/build/Game.d -g -Wall -O2 -mword-relocations -fomit-frame-pointer -ffunction-sections -march=armv6k -mtune=mpcore -mfloat-abi=hard -mtp=soft -I/d/Github/TRekt_3D/TRekt_3D/include -I/c/devkitPro/libctru/include -I/c/devkitPro/portlibs/armv6k/include -I/c/devkitPro/portlibs/3ds/include -I/d/Github/TRekt_3D/TRekt_3D/build -DARM11 -D_3DS -fno-rtti -fno-exceptions -std=gnu++11 -c /d/Github/TRekt_3D/TRekt_3D/source/Game.cpp -o Game.o 
   d:/Github/TRekt_3D/TRekt_3D/source/Game.cpp: In destructor 'GameScreen::~GameScreen()':
@@ -37,5 +39,24 @@ d:/Github/TRekt_3D/TRekt_3D/source/Game.cpp(432,22): warning G8B89E764: use of a
 d:/Github/TRekt_3D/TRekt_3D/source/Game.cpp(702,14): warning G8B89E764: use of an operand of type 'bool' in 'operator++' is deprecated [-Wdeprecated]
     m_numOfDeath++;
                 ^~
+  Meteorite.cpp
+  arm-none-eabi-g++ -MMD -MP -MF /d/Github/TRekt_3D/TRekt_3D/build/Meteorite.d -g -Wall -O2 -mword-relocations -fomit-frame-pointer -ffunction-sections -march=armv6k -mtune=mpcore -mfloat-abi=hard -mtp=soft -I/d/Github/TRekt_3D/TRekt_3D/include -I/c/devkitPro/libctru/include -I/c/devkitPro/portlibs/armv6k/include -I/c/devkitPro/portlibs/3ds/include -I/d/Github/TRekt_3D/TRekt_3D/build -DARM11 -D_3DS -fno-rtti -fno-exceptions -std=gnu++11 -c /d/Github/TRekt_3D/TRekt_3D/source/Meteorite.cpp -o Meteorite.o 
+  SceneManager.cpp
+  arm-none-eabi-g++ -MMD -MP -MF /d/Github/TRekt_3D/TRekt_3D/build/SceneManager.d -g -Wall -O2 -mword-relocations -fomit-frame-pointer -ffunction-sections -march=armv6k -mtune=mpcore -mfloat-abi=hard -mtp=soft -I/d/Github/TRekt_3D/TRekt_3D/include -I/c/devkitPro/libctru/include -I/c/devkitPro/portlibs/armv6k/include -I/c/devkitPro/portlibs/3ds/include -I/d/Github/TRekt_3D/TRekt_3D/build -DARM11 -D_3DS -fno-rtti -fno-exceptions -std=gnu++11 -c /d/Github/TRekt_3D/TRekt_3D/source/SceneManager.cpp -o SceneManager.o 
+  d:/Github/TRekt_3D/TRekt_3D/source/SceneManager.cpp: In destructor 'SceneManager::~SceneManager()':
+d:/Github/TRekt_3D/TRekt_3D/source/SceneManager.cpp(33,9): warning GEC9AB9D8: deleting object of polymorphic class type 'Scene' which has non-virtual destructor might cause undefined behavior [-Wdelete-non-virtual-dtor]
+    delete m_actualScene;
+           ^~~~~~~~~~~~~
+  d:/Github/TRekt_3D/TRekt_3D/source/SceneManager.cpp: In member function 'void SceneManager::setActualScene(SceneManager::SCENES)':
+d:/Github/TRekt_3D/TRekt_3D/source/SceneManager.cpp(74,23): warning GEC9AB9D8: deleting object of polymorphic class type 'Scene' which has non-virtual destructor might cause undefined behavior [-Wdelete-non-virtual-dtor]
+    delete (m_actualScene);
+                         ^
+  SplashScreen.cpp
+  arm-none-eabi-g++ -MMD -MP -MF /d/Github/TRekt_3D/TRekt_3D/build/SplashScreen.d -g -Wall -O2 -mword-relocations -fomit-frame-pointer -ffunction-sections -march=armv6k -mtune=mpcore -mfloat-abi=hard -mtp=soft -I/d/Github/TRekt_3D/TRekt_3D/include -I/c/devkitPro/libctru/include -I/c/devkitPro/portlibs/armv6k/include -I/c/devkitPro/portlibs/3ds/include -I/d/Github/TRekt_3D/TRekt_3D/build -DARM11 -D_3DS -fno-rtti -fno-exceptions -std=gnu++11 -c /d/Github/TRekt_3D/TRekt_3D/source/SplashScreen.cpp -o SplashScreen.o 
+  main.cpp
+  arm-none-eabi-g++ -MMD -MP -MF /d/Github/TRekt_3D/TRekt_3D/build/main.d -g -Wall -O2 -mword-relocations -fomit-frame-pointer -ffunction-sections -march=armv6k -mtune=mpcore -mfloat-abi=hard -mtp=soft -I/d/Github/TRekt_3D/TRekt_3D/include -I/c/devkitPro/libctru/include -I/c/devkitPro/portlibs/armv6k/include -I/c/devkitPro/portlibs/3ds/include -I/d/Github/TRekt_3D/TRekt_3D/build -DARM11 -D_3DS -fno-rtti -fno-exceptions -std=gnu++11 -c /d/Github/TRekt_3D/TRekt_3D/source/main.cpp -o main.o 
+d:/Github/TRekt_3D/TRekt_3D/source/main.cpp(19,9): warning G22EB126D: #pragma once in main file
+   #pragma once
+           ^~~~
   linking TRekt_3D.elf
   built ... TRekt_3D.3dsx
