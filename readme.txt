@@ -17,4 +17,4 @@ Credits:
 
     - Smealum & Yellows8: Scene3DS and stuff, you know.
     - Xerpi: SF2D, SFTD, SFIL, Portlibs
-	- Sound Class: Cheuble  
+	- Sound Class: Cheuble  - ahruon: Background image

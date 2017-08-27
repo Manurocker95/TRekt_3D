@@ -34,25 +34,8 @@ d:/Github/TRekt_3D/TRekt_3D/source/Game.cpp(432,22): warning G8B89E764: use of a
             m_numOfDeath++;
                         ^~
   d:/Github/TRekt_3D/TRekt_3D/source/Game.cpp: In member function 'void GameScreen::DieByAge()':
-d:/Github/TRekt_3D/TRekt_3D/source/Game.cpp(683,14): warning G8B89E764: use of an operand of type 'bool' in 'operator++' is deprecated [-Wdeprecated]
+d:/Github/TRekt_3D/TRekt_3D/source/Game.cpp(702,14): warning G8B89E764: use of an operand of type 'bool' in 'operator++' is deprecated [-Wdeprecated]
     m_numOfDeath++;
                 ^~
-  SceneManager.cpp
-  arm-none-eabi-g++ -MMD -MP -MF /d/Github/TRekt_3D/TRekt_3D/build/SceneManager.d -g -Wall -O2 -mword-relocations -fomit-frame-pointer -ffunction-sections -march=armv6k -mtune=mpcore -mfloat-abi=hard -mtp=soft -I/d/Github/TRekt_3D/TRekt_3D/include -I/c/devkitPro/libctru/include -I/c/devkitPro/portlibs/armv6k/include -I/c/devkitPro/portlibs/3ds/include -I/d/Github/TRekt_3D/TRekt_3D/build -DARM11 -D_3DS -fno-rtti -fno-exceptions -std=gnu++11 -c /d/Github/TRekt_3D/TRekt_3D/source/SceneManager.cpp -o SceneManager.o 
-  d:/Github/TRekt_3D/TRekt_3D/source/SceneManager.cpp: In destructor 'SceneManager::~SceneManager()':
-d:/Github/TRekt_3D/TRekt_3D/source/SceneManager.cpp(33,9): warning GEC9AB9D8: deleting object of polymorphic class type 'Scene' which has non-virtual destructor might cause undefined behavior [-Wdelete-non-virtual-dtor]
-    delete m_actualScene;
-           ^~~~~~~~~~~~~
-  d:/Github/TRekt_3D/TRekt_3D/source/SceneManager.cpp: In member function 'void SceneManager::setActualScene(SceneManager::SCENES)':
-d:/Github/TRekt_3D/TRekt_3D/source/SceneManager.cpp(74,23): warning GEC9AB9D8: deleting object of polymorphic class type 'Scene' which has non-virtual destructor might cause undefined behavior [-Wdelete-non-virtual-dtor]
-    delete (m_actualScene);
-                         ^
-  SplashScreen.cpp
-  arm-none-eabi-g++ -MMD -MP -MF /d/Github/TRekt_3D/TRekt_3D/build/SplashScreen.d -g -Wall -O2 -mword-relocations -fomit-frame-pointer -ffunction-sections -march=armv6k -mtune=mpcore -mfloat-abi=hard -mtp=soft -I/d/Github/TRekt_3D/TRekt_3D/include -I/c/devkitPro/libctru/include -I/c/devkitPro/portlibs/armv6k/include -I/c/devkitPro/portlibs/3ds/include -I/d/Github/TRekt_3D/TRekt_3D/build -DARM11 -D_3DS -fno-rtti -fno-exceptions -std=gnu++11 -c /d/Github/TRekt_3D/TRekt_3D/source/SplashScreen.cpp -o SplashScreen.o 
-  main.cpp
-  arm-none-eabi-g++ -MMD -MP -MF /d/Github/TRekt_3D/TRekt_3D/build/main.d -g -Wall -O2 -mword-relocations -fomit-frame-pointer -ffunction-sections -march=armv6k -mtune=mpcore -mfloat-abi=hard -mtp=soft -I/d/Github/TRekt_3D/TRekt_3D/include -I/c/devkitPro/libctru/include -I/c/devkitPro/portlibs/armv6k/include -I/c/devkitPro/portlibs/3ds/include -I/d/Github/TRekt_3D/TRekt_3D/build -DARM11 -D_3DS -fno-rtti -fno-exceptions -std=gnu++11 -c /d/Github/TRekt_3D/TRekt_3D/source/main.cpp -o main.o 
-d:/Github/TRekt_3D/TRekt_3D/source/main.cpp(19,9): warning G22EB126D: #pragma once in main file
-   #pragma once
-           ^~~~
   linking TRekt_3D.elf
   built ... TRekt_3D.3dsx

@@ -82,7 +82,7 @@ void GameScreen::Start()
 
 		if (i < MAXNUMBEROFDINOS / 2)
 		{
-			if (gender % 2 == 0)
+			if (gender % 2 != 0)
 			{
 				m_players.push_back(new Dinosaur(100 + m_space, 200, m_dinoSM, true, 4, 20, 26, true));
 			}
@@ -508,14 +508,14 @@ void GameScreen::CheckInputs()
 				{
 					m_playedBefore = true;
 					m_screen = GAME;
+					ResetGame();
 					return;
 				}
 				else
 				{
 					ResetGame();
 					return;
-				}
-				
+				}		
 			}
 		}
 
@@ -526,6 +526,7 @@ void GameScreen::CheckInputs()
 			{
 				m_playedBefore = true;
 				m_screen = GAME;
+				ResetGame();
 				return;
 			}
 			else
@@ -533,6 +534,13 @@ void GameScreen::CheckInputs()
 				ResetGame();
 				return;
 			}
+		}
+
+		// We Exit pressing Select
+		if ((hidKeysDown() & KEY_SELECT))
+		{
+			//CheckScore();
+			SceneManager::instance()->exitGame();
 		}
 
 		break;
@@ -604,6 +612,13 @@ void GameScreen::CheckInputs()
 			m_pause = !m_pause;
 		}
 
+		// We go to tile when pressing Select
+		if ((hidKeysDown() & KEY_SELECT))
+		{
+			goToTitle();
+		}
+
+		
 		break;
 
 	case END:
@@ -615,13 +630,14 @@ void GameScreen::CheckInputs()
 
 		break;
 	}
-	
+	/*
 	// We Exit pressing Select
 	if ((hidKeysDown() & KEY_SELECT))
 	{
 		//CheckScore();
 		SceneManager::instance()->exitGame();
 	}
+	*/
 }
 
 void GameScreen::EndGame()
@@ -653,11 +669,14 @@ void GameScreen::ResetGame()
 	// Vector of Dinosaurs
 	for (const auto& dino : m_players)
 	{
-		if (i < MAXNUMBEROFDINOS / 2)
+		dino->reset();
+
+		if (i >= STARTINGDINOSAURS)
 		{
-			dino->reset();
-			i++;
+			dino->Die();
 		}
+
+		i++;
 	}
 
 	// Vector of Meteorites
