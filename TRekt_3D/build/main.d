@@ -88,7 +88,7 @@ main.o: d:/Github/TRekt_3D/TRekt_3D/source/main.cpp \
  c:/devkitPro/libctru/include/c3d/renderbuffer.h \
  c:/devkitPro/libctru/include/c3d/renderqueue.h \
  c:/devkitPro/libctru/include/sftd.h \
- d:/Github/TRekt_3D/TRekt_3D/source/dsp.h \
+ d:/Github/TRekt_3D/TRekt_3D/source/DSP1/dsp.h \
  d:/Github/TRekt_3D/TRekt_3D/source/SceneManager.h \
  d:/Github/TRekt_3D/TRekt_3D/source/SplashScreen.h \
  c:/devkitPro/libctru/include/sfil.h \
@@ -282,7 +282,7 @@ c:/devkitPro/libctru/include/c3d/renderqueue.h:
 
 c:/devkitPro/libctru/include/sftd.h:
 
-d:/Github/TRekt_3D/TRekt_3D/source/dsp.h:
+d:/Github/TRekt_3D/TRekt_3D/source/DSP1/dsp.h:
 
 d:/Github/TRekt_3D/TRekt_3D/source/SceneManager.h:
 

@@ -1,36 +1,91 @@
 ﻿C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\Common7\IDE\VC\VCTargets\Microsoft.Cpp.props(31,3): warning MSB4011: "C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\Common7\IDE\VC\VCTargets\Microsoft.Makefile.props" cannot be imported again. It was already imported at "C:\Program Files (x86)\MSBuild\Microsoft.Cpp\v4.0\V140\Microsoft.cpp.props (31,3)". This is most likely a build authoring error. This subsequent import will be ignored. [D:\Github\TRekt_3D\TRekt_3D\TRekt_3D.vcxproj]
-  dsp.c
-  arm-none-eabi-gcc -MMD -MP -MF /d/Github/TRekt_3D/TRekt_3D/build/dsp.d -g -Wall -O2 -mword-relocations -fomit-frame-pointer -ffunction-sections -march=armv6k -mtune=mpcore -mfloat-abi=hard -mtp=soft -I/d/Github/TRekt_3D/TRekt_3D/include -I/c/devkitPro/libctru/include -I/c/devkitPro/portlibs/armv6k/include -I/c/devkitPro/portlibs/3ds/include -I/d/Github/TRekt_3D/TRekt_3D/build -DARM11 -D_3DS -c /d/Github/TRekt_3D/TRekt_3D/source/dsp.c -o dsp.o 
-  d:/Github/TRekt_3D/TRekt_3D/source/dsp.c: In function 'dumpCode':
-d:/Github/TRekt_3D/TRekt_3D/source/dsp.c(254,17): warning G14B797B8: implicit declaration of function 'memmem'; did you mean 'memset'? [-Wimplicit-function-declaration]
-    dsp_loc = (u8*)memmem(decompressedBuffer , decompressedSize, magic, 4);
-                   ^~~~~~
-                   memset
-  d:/Github/TRekt_3D/TRekt_3D/source/dsp.c: In function 'ensureDSP':
-d:/Github/TRekt_3D/TRekt_3D/source/dsp.c(287,12): error G1779FE23: invalid initializer
-    FILE fh = fopen("sdmc:/3ds/dspfirm.cdc", "rb");
-              ^~~~~
-d:/Github/TRekt_3D/TRekt_3D/source/dsp.c(288,9): error GC5023B0E: invalid operands to binary != (have 'FILE {aka struct __sFILE}' and 'void *')
-    if (fh != NULL) {
-           ^~
-d:/Github/TRekt_3D/TRekt_3D/source/dsp.c(289,10): error G1CC0E50E: incompatible type for argument 1 of 'fclose'
-     fclose(fh);
-            ^~
-  In file included from c:\devkitpro\devkitarm\arm-none-eabi\include\sys\lock.h:4:0,
-                   from c:/devkitPro/libctru/include/3ds/synchronization.h:6,
-                   from c:/devkitPro/libctru/include/3ds.h:19,
-                   from d:/Github/TRekt_3D/TRekt_3D/source/dsp.c:15:
-  c:\devkitpro\devkitarm\arm-none-eabi\include\stdio.h:191:5: note: expected 'FILE * {aka struct __sFILE *}' but argument is of type 'FILE {aka struct __sFILE}'
-   int _EXFUN(fclose, (FILE *));
-       ^
-d:/Github/TRekt_3D/TRekt_3D/source/dsp.c(293,6): error GCDCAB7C7: 'i' undeclared (first use in this function)
-    for(i = 0; i < NB_TITLES; ++i){
-        ^
-  d:/Github/TRekt_3D/TRekt_3D/source/dsp.c:293:6: note: each undeclared identifier is reported only once for each function it appears in
-d:/Github/TRekt_3D/TRekt_3D/source/dsp.c(297,7): warning G14B797B8: implicit declaration of function 'R_SUCCESS'; did you mean 'R_SUCCEEDED'? [-Wimplicit-function-declaration]
-     if (R_SUCCESS(res)) {
-         ^~~~~~~~~
-         R_SUCCEEDED
-  make[1]: *** [dsp.o] Error 1
+  font.ttf
+  font2.ttf
+  font_3.ttf
+  Dino.cpp
+  arm-none-eabi-g++ -MMD -MP -MF /d/Github/TRekt_3D/TRekt_3D/build/Dino.d -g -Wall -O2 -mword-relocations -fomit-frame-pointer -ffunction-sections -march=armv6k -mtune=mpcore -mfloat-abi=hard -mtp=soft -I/d/Github/TRekt_3D/TRekt_3D/include -I/c/devkitPro/libctru/include -I/c/devkitPro/portlibs/armv6k/include -I/c/devkitPro/portlibs/3ds/include -I/d/Github/TRekt_3D/TRekt_3D/build -DARM11 -D_3DS -D_GNU_SOURCE  -fno-rtti -fno-exceptions -std=gnu++11 -c /d/Github/TRekt_3D/TRekt_3D/source/Dino.cpp -o Dino.o 
+  Game.cpp
+  arm-none-eabi-g++ -MMD -MP -MF /d/Github/TRekt_3D/TRekt_3D/build/Game.d -g -Wall -O2 -mword-relocations -fomit-frame-pointer -ffunction-sections -march=armv6k -mtune=mpcore -mfloat-abi=hard -mtp=soft -I/d/Github/TRekt_3D/TRekt_3D/include -I/c/devkitPro/libctru/include -I/c/devkitPro/portlibs/armv6k/include -I/c/devkitPro/portlibs/3ds/include -I/d/Github/TRekt_3D/TRekt_3D/build -DARM11 -D_3DS -D_GNU_SOURCE  -fno-rtti -fno-exceptions -std=gnu++11 -c /d/Github/TRekt_3D/TRekt_3D/source/Game.cpp -o Game.o 
+  d:/Github/TRekt_3D/TRekt_3D/source/Game.cpp: In destructor 'GameScreen::~GameScreen()':
+d:/Github/TRekt_3D/TRekt_3D/source/Game.cpp(35,9): warning G90E9E4C3: possible problem detected in invocation of delete operator: [-Wdelete-incomplete]
+    delete font;
+           ^~~~
+d:/Github/TRekt_3D/TRekt_3D/source/Game.cpp(35,9): warning G1DA8B262: invalid use of incomplete type 'struct sftd_font'
+  In file included from d:/Github/TRekt_3D/TRekt_3D/source/Game.h:24:0,
+                   from d:/Github/TRekt_3D/TRekt_3D/source/Game.cpp:19:
+  c:/devkitPro/libctru/include/sftd.h:22:16: note: forward declaration of 'struct sftd_font'
+   typedef struct sftd_font sftd_font;
+                  ^~~~~~~~~
+  d:/Github/TRekt_3D/TRekt_3D/source/Game.cpp:35:9: note: neither the destructor nor the class-specific operator delete will be called, even if they are declared when the class is defined
+    delete font;
+           ^~~~
+d:/Github/TRekt_3D/TRekt_3D/source/Game.cpp(36,9): warning G90E9E4C3: possible problem detected in invocation of delete operator: [-Wdelete-incomplete]
+    delete font2;
+           ^~~~~
+d:/Github/TRekt_3D/TRekt_3D/source/Game.cpp(36,9): warning G1DA8B262: invalid use of incomplete type 'struct sftd_font'
+  In file included from d:/Github/TRekt_3D/TRekt_3D/source/Game.h:24:0,
+                   from d:/Github/TRekt_3D/TRekt_3D/source/Game.cpp:19:
+  c:/devkitPro/libctru/include/sftd.h:22:16: note: forward declaration of 'struct sftd_font'
+   typedef struct sftd_font sftd_font;
+                  ^~~~~~~~~
+  d:/Github/TRekt_3D/TRekt_3D/source/Game.cpp:36:9: note: neither the destructor nor the class-specific operator delete will be called, even if they are declared when the class is defined
+    delete font2;
+           ^~~~~
+  d:/Github/TRekt_3D/TRekt_3D/source/Game.cpp: In member function 'virtual void GameScreen::Update()':
+d:/Github/TRekt_3D/TRekt_3D/source/Game.cpp(422,20): warning G8B89E764: use of an operand of type 'bool' in 'operator++' is deprecated [-Wdeprecated]
+          m_numOfDeath++;
+                      ^~
+d:/Github/TRekt_3D/TRekt_3D/source/Game.cpp(432,22): warning G8B89E764: use of an operand of type 'bool' in 'operator++' is deprecated [-Wdeprecated]
+            m_numOfDeath++;
+                        ^~
+  d:/Github/TRekt_3D/TRekt_3D/source/Game.cpp: In member function 'void GameScreen::DieByAge()':
+d:/Github/TRekt_3D/TRekt_3D/source/Game.cpp(702,14): warning G8B89E764: use of an operand of type 'bool' in 'operator++' is deprecated [-Wdeprecated]
+    m_numOfDeath++;
+                ^~
+  Meteorite.cpp
+  arm-none-eabi-g++ -MMD -MP -MF /d/Github/TRekt_3D/TRekt_3D/build/Meteorite.d -g -Wall -O2 -mword-relocations -fomit-frame-pointer -ffunction-sections -march=armv6k -mtune=mpcore -mfloat-abi=hard -mtp=soft -I/d/Github/TRekt_3D/TRekt_3D/include -I/c/devkitPro/libctru/include -I/c/devkitPro/portlibs/armv6k/include -I/c/devkitPro/portlibs/3ds/include -I/d/Github/TRekt_3D/TRekt_3D/build -DARM11 -D_3DS -D_GNU_SOURCE  -fno-rtti -fno-exceptions -std=gnu++11 -c /d/Github/TRekt_3D/TRekt_3D/source/Meteorite.cpp -o Meteorite.o 
+  SceneManager.cpp
+  arm-none-eabi-g++ -MMD -MP -MF /d/Github/TRekt_3D/TRekt_3D/build/SceneManager.d -g -Wall -O2 -mword-relocations -fomit-frame-pointer -ffunction-sections -march=armv6k -mtune=mpcore -mfloat-abi=hard -mtp=soft -I/d/Github/TRekt_3D/TRekt_3D/include -I/c/devkitPro/libctru/include -I/c/devkitPro/portlibs/armv6k/include -I/c/devkitPro/portlibs/3ds/include -I/d/Github/TRekt_3D/TRekt_3D/build -DARM11 -D_3DS -D_GNU_SOURCE  -fno-rtti -fno-exceptions -std=gnu++11 -c /d/Github/TRekt_3D/TRekt_3D/source/SceneManager.cpp -o SceneManager.o 
+  d:/Github/TRekt_3D/TRekt_3D/source/SceneManager.cpp: In destructor 'SceneManager::~SceneManager()':
+d:/Github/TRekt_3D/TRekt_3D/source/SceneManager.cpp(33,9): warning GEC9AB9D8: deleting object of polymorphic class type 'Scene' which has non-virtual destructor might cause undefined behavior [-Wdelete-non-virtual-dtor]
+    delete m_actualScene;
+           ^~~~~~~~~~~~~
+  d:/Github/TRekt_3D/TRekt_3D/source/SceneManager.cpp: In member function 'void SceneManager::setActualScene(SceneManager::SCENES)':
+d:/Github/TRekt_3D/TRekt_3D/source/SceneManager.cpp(74,23): warning GEC9AB9D8: deleting object of polymorphic class type 'Scene' which has non-virtual destructor might cause undefined behavior [-Wdelete-non-virtual-dtor]
+    delete (m_actualScene);
+                         ^
+  SplashScreen.cpp
+  arm-none-eabi-g++ -MMD -MP -MF /d/Github/TRekt_3D/TRekt_3D/build/SplashScreen.d -g -Wall -O2 -mword-relocations -fomit-frame-pointer -ffunction-sections -march=armv6k -mtune=mpcore -mfloat-abi=hard -mtp=soft -I/d/Github/TRekt_3D/TRekt_3D/include -I/c/devkitPro/libctru/include -I/c/devkitPro/portlibs/armv6k/include -I/c/devkitPro/portlibs/3ds/include -I/d/Github/TRekt_3D/TRekt_3D/build -DARM11 -D_3DS -D_GNU_SOURCE  -fno-rtti -fno-exceptions -std=gnu++11 -c /d/Github/TRekt_3D/TRekt_3D/source/SplashScreen.cpp -o SplashScreen.o 
+  button.cpp
+  arm-none-eabi-g++ -MMD -MP -MF /d/Github/TRekt_3D/TRekt_3D/build/button.d -g -Wall -O2 -mword-relocations -fomit-frame-pointer -ffunction-sections -march=armv6k -mtune=mpcore -mfloat-abi=hard -mtp=soft -I/d/Github/TRekt_3D/TRekt_3D/include -I/c/devkitPro/libctru/include -I/c/devkitPro/portlibs/armv6k/include -I/c/devkitPro/portlibs/3ds/include -I/d/Github/TRekt_3D/TRekt_3D/build -DARM11 -D_3DS -D_GNU_SOURCE  -fno-rtti -fno-exceptions -std=gnu++11 -c /d/Github/TRekt_3D/TRekt_3D/source/button.cpp -o button.o 
+  d:/Github/TRekt_3D/TRekt_3D/source/button.cpp: In destructor 'button::~button()':
+d:/Github/TRekt_3D/TRekt_3D/source/button.cpp(38,9): warning G90E9E4C3: possible problem detected in invocation of delete operator: [-Wdelete-incomplete]
+    delete font;
+           ^~~~
+d:/Github/TRekt_3D/TRekt_3D/source/button.cpp(38,9): warning G1DA8B262: invalid use of incomplete type 'struct sftd_font'
+  In file included from d:/Github/TRekt_3D/TRekt_3D/source/button.h:3:0,
+                   from d:/Github/TRekt_3D/TRekt_3D/source/button.cpp:1:
+  c:/devkitPro/libctru/include/sftd.h:22:16: note: forward declaration of 'struct sftd_font'
+   typedef struct sftd_font sftd_font;
+                  ^~~~~~~~~
+  d:/Github/TRekt_3D/TRekt_3D/source/button.cpp:38:9: note: neither the destructor nor the class-specific operator delete will be called, even if they are declared when the class is defined
+    delete font;
+           ^~~~
+  main.cpp
+  arm-none-eabi-g++ -MMD -MP -MF /d/Github/TRekt_3D/TRekt_3D/build/main.d -g -Wall -O2 -mword-relocations -fomit-frame-pointer -ffunction-sections -march=armv6k -mtune=mpcore -mfloat-abi=hard -mtp=soft -I/d/Github/TRekt_3D/TRekt_3D/include -I/c/devkitPro/libctru/include -I/c/devkitPro/portlibs/armv6k/include -I/c/devkitPro/portlibs/3ds/include -I/d/Github/TRekt_3D/TRekt_3D/build -DARM11 -D_3DS -D_GNU_SOURCE  -fno-rtti -fno-exceptions -std=gnu++11 -c /d/Github/TRekt_3D/TRekt_3D/source/main.cpp -o main.o 
+d:/Github/TRekt_3D/TRekt_3D/source/main.cpp(19,9): warning G22EB126D: #pragma once in main file
+   #pragma once
+           ^~~~
+  menu.cpp
+  arm-none-eabi-g++ -MMD -MP -MF /d/Github/TRekt_3D/TRekt_3D/build/menu.d -g -Wall -O2 -mword-relocations -fomit-frame-pointer -ffunction-sections -march=armv6k -mtune=mpcore -mfloat-abi=hard -mtp=soft -I/d/Github/TRekt_3D/TRekt_3D/include -I/c/devkitPro/libctru/include -I/c/devkitPro/portlibs/armv6k/include -I/c/devkitPro/portlibs/3ds/include -I/d/Github/TRekt_3D/TRekt_3D/build -DARM11 -D_3DS -D_GNU_SOURCE  -fno-rtti -fno-exceptions -std=gnu++11 -c /d/Github/TRekt_3D/TRekt_3D/source/menu.cpp -o menu.o 
+  sound.cpp
+  arm-none-eabi-g++ -MMD -MP -MF /d/Github/TRekt_3D/TRekt_3D/build/sound.d -g -Wall -O2 -mword-relocations -fomit-frame-pointer -ffunction-sections -march=armv6k -mtune=mpcore -mfloat-abi=hard -mtp=soft -I/d/Github/TRekt_3D/TRekt_3D/include -I/c/devkitPro/libctru/include -I/c/devkitPro/portlibs/armv6k/include -I/c/devkitPro/portlibs/3ds/include -I/d/Github/TRekt_3D/TRekt_3D/build -DARM11 -D_3DS -D_GNU_SOURCE  -fno-rtti -fno-exceptions -std=gnu++11 -c /d/Github/TRekt_3D/TRekt_3D/source/sound.cpp -o sound.o 
+  textbox.cpp
+  arm-none-eabi-g++ -MMD -MP -MF /d/Github/TRekt_3D/TRekt_3D/build/textbox.d -g -Wall -O2 -mword-relocations -fomit-frame-pointer -ffunction-sections -march=armv6k -mtune=mpcore -mfloat-abi=hard -mtp=soft -I/d/Github/TRekt_3D/TRekt_3D/include -I/c/devkitPro/libctru/include -I/c/devkitPro/portlibs/armv6k/include -I/c/devkitPro/portlibs/3ds/include -I/d/Github/TRekt_3D/TRekt_3D/build -DARM11 -D_3DS -D_GNU_SOURCE  -fno-rtti -fno-exceptions -std=gnu++11 -c /d/Github/TRekt_3D/TRekt_3D/source/textbox.cpp -o textbox.o 
+  linking TRekt_3D.elf
+  main.o: In function `main':
+  d:/Github/TRekt_3D/TRekt_3D/source/main.cpp:70: undefined reference to `ensureDSP()'
+collect2.exe : error : ld returned 1 exit status
+  make[1]: *** [/d/Github/TRekt_3D/TRekt_3D/TRekt_3D.elf] Error 1
   make: *** [build] Error 2
 C:\Program Files (x86)\MSBuild\Microsoft.Cpp\v4.0\V140\Microsoft.MakeFile.Targets(41,5): error MSB3073: The command "make" exited with code 2.
