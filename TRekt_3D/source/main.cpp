@@ -35,13 +35,16 @@ typedef SSIZE_T ssize_t;
 #endif
 
 // Libraries Needed
+
 #include <3ds.h>
 #include <sf2d.h>
 #include <sftd.h>
 #include <sys/stat.h>
+#include "dspDump/dsp.h"
 
 // SceneManager to go into scenes (We can create splashscreen, titlescreen, gamescreen, endscreen...)
 #include "SceneManager.h"
+
 
 // Settings: We can configure everything from there easily
 #include "Settings.h"
@@ -62,7 +65,10 @@ int main()
 	// Romfs
 	romfsInit();
 
-	// Sound - We need to dump dsp on the console
+	// Dump dsp on the console
+	ensureDSP();
+
+	// Sound 
 	ndspInit();
 
 	//Creating folders for our homebrew's save. Just rename the last to your Homebrew Name
