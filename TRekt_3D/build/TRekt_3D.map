@@ -139,7 +139,7 @@ c:/devkitPro/libctru/lib\libcitro3d.a(immediate.o)
 c:/devkitPro/libctru/lib\libcitro3d.a(framebuffer.o)
                               c:/devkitPro/libctru/lib\libcitro3d.a(renderqueue.o) (C3D_CalcColorBufSize)
 c:/devkitPro/libctru/lib\libctru.a(linear.o)
-                              sound.o (linearAlloc)
+                              dsp.o (linearMemAlign)
 c:/devkitPro/libctru/lib\libctru.a(vram.o)
                               c:/devkitPro/libctru/lib\libcitro3d.a(texture.o) (vramAlloc)
 c:/devkitPro/libctru/lib\libctru.a(gfx.o)
@@ -167,7 +167,7 @@ c:/devkitPro/libctru/lib\libctru.a(ndsp-channel.o)
 c:/devkitPro/libctru/lib\libctru.a(ndsp.o)
                               c:/devkitPro/libctru/lib\libctru.a(ndsp-channel.o) (ndspVars)
 c:/devkitPro/libctru/lib\libctru.a(fs.o)
-                              c:/devkitPro/libctru/lib\libctru.a(romfs_dev.o) (FSUSER_OpenFileDirectly)
+                              dsp.o (FSUSER_OpenFileDirectly)
 c:/devkitPro/libctru/lib\libctru.a(ptmsysm.o)
                               c:/devkitPro/libctru/lib\libctru.a(os.o) (ptmSysmInit)
 c:/devkitPro/libctru/lib\libctru.a(hid.o)
@@ -533,7 +533,7 @@ c:/devkitpro/devkitarm/bin/../lib/gcc/arm-none-eabi/7.1.0/../../../../arm-none-e
 c:/devkitpro/devkitarm/bin/../lib/gcc/arm-none-eabi/7.1.0/../../../../arm-none-eabi/lib/armv6k/fpu\libg.a(lib_a-fwalk.o)
                               c:/devkitpro/devkitarm/bin/../lib/gcc/arm-none-eabi/7.1.0/../../../../arm-none-eabi/lib/armv6k/fpu\libg.a(lib_a-findfp.o) (_fwalk)
 c:/devkitpro/devkitarm/bin/../lib/gcc/arm-none-eabi/7.1.0/../../../../arm-none-eabi/lib/armv6k/fpu\libg.a(lib_a-fwrite.o)
-                              c:/devkitPro/portlibs/armv6k/lib\libpng.a(pngwio.o) (fwrite)
+                              dsp.o (fwrite)
 c:/devkitpro/devkitarm/bin/../lib/gcc/arm-none-eabi/7.1.0/../../../../arm-none-eabi/lib/armv6k/fpu\libg.a(lib_a-getc.o)
                               c:/devkitpro/devkitarm/bin/../lib/gcc/arm-none-eabi/7.1.0/../../../../arm-none-eabi/lib/armv6k/fpu\libstdc++.a(ext11-inst.o) (getc)
 c:/devkitpro/devkitarm/bin/../lib/gcc/arm-none-eabi/7.1.0/../../../../arm-none-eabi/lib/armv6k/fpu\libg.a(lib_a-getwc.o)
@@ -575,7 +575,7 @@ c:/devkitpro/devkitarm/bin/../lib/gcc/arm-none-eabi/7.1.0/../../../../arm-none-e
 c:/devkitpro/devkitarm/bin/../lib/gcc/arm-none-eabi/7.1.0/../../../../arm-none-eabi/lib/armv6k/fpu\libg.a(lib_a-malignr.o)
                               c:/devkitpro/devkitarm/bin/../lib/gcc/arm-none-eabi/7.1.0/../../../../arm-none-eabi/lib/armv6k/fpu\libg.a(lib_a-malign.o) (_memalign_r)
 c:/devkitpro/devkitarm/bin/../lib/gcc/arm-none-eabi/7.1.0/../../../../arm-none-eabi/lib/armv6k/fpu\libg.a(lib_a-malloc.o)
-                              c:/devkitPro/libctru/lib\libsftd.a(sftd.o) (malloc)
+                              dsp.o (malloc)
 c:/devkitpro/devkitarm/bin/../lib/gcc/arm-none-eabi/7.1.0/../../../../arm-none-eabi/lib/armv6k/fpu\libg.a(lib_a-mallocr.o)
                               c:/devkitpro/devkitarm/bin/../lib/gcc/arm-none-eabi/7.1.0/../../../../arm-none-eabi/lib/armv6k/fpu\libg.a(lib_a-callocr.o) (_malloc_r)
 c:/devkitpro/devkitarm/bin/../lib/gcc/arm-none-eabi/7.1.0/../../../../arm-none-eabi/lib/armv6k/fpu\libg.a(lib_a-mbrtowc.o)
@@ -585,15 +585,19 @@ c:/devkitpro/devkitarm/bin/../lib/gcc/arm-none-eabi/7.1.0/../../../../arm-none-e
 c:/devkitpro/devkitarm/bin/../lib/gcc/arm-none-eabi/7.1.0/../../../../arm-none-eabi/lib/armv6k/fpu\libg.a(lib_a-memchr-stub.o)
                               c:/devkitPro/portlibs/armv6k/lib\libfreetype.a(type1.o) (memchr)
 c:/devkitpro/devkitarm/bin/../lib/gcc/arm-none-eabi/7.1.0/../../../../arm-none-eabi/lib/armv6k/fpu\libg.a(lib_a-memcmp.o)
-                              c:/devkitPro/portlibs/armv6k/lib\libfreetype.a(ftbase.o) (memcmp)
+                              dsp.o (memcmp)
 c:/devkitpro/devkitarm/bin/../lib/gcc/arm-none-eabi/7.1.0/../../../../arm-none-eabi/lib/armv6k/fpu\libg.a(lib_a-memcpy-stub.o)
                               Game.o (memcpy)
+c:/devkitpro/devkitarm/bin/../lib/gcc/arm-none-eabi/7.1.0/../../../../arm-none-eabi/lib/armv6k/fpu\libg.a(lib_a-memmem.o)
+                              dsp.o (memmem)
 c:/devkitpro/devkitarm/bin/../lib/gcc/arm-none-eabi/7.1.0/../../../../arm-none-eabi/lib/armv6k/fpu\libg.a(lib_a-memmove.o)
                               Game.o (memmove)
 c:/devkitpro/devkitarm/bin/../lib/gcc/arm-none-eabi/7.1.0/../../../../arm-none-eabi/lib/armv6k/fpu\libg.a(lib_a-memset.o)
-                              c:/devkitPro/portlibs/armv6k/lib\libfreetype.a(ftbase.o) (memset)
+                              dsp.o (memset)
 c:/devkitpro/devkitarm/bin/../lib/gcc/arm-none-eabi/7.1.0/../../../../arm-none-eabi/lib/armv6k/fpu\libg.a(lib_a-mlock.o)
                               c:/devkitpro/devkitarm/bin/../lib/gcc/arm-none-eabi/7.1.0/../../../../arm-none-eabi/lib/armv6k/fpu\libg.a(lib_a-freer.o) (__malloc_lock)
+c:/devkitpro/devkitarm/bin/../lib/gcc/arm-none-eabi/7.1.0/../../../../arm-none-eabi/lib/armv6k/fpu\libg.a(lib_a-printf.o)
+                              dsp.o (printf)
 c:/devkitpro/devkitarm/bin/../lib/gcc/arm-none-eabi/7.1.0/../../../../arm-none-eabi/lib/armv6k/fpu\libg.a(lib_a-putc.o)
                               c:/devkitpro/devkitarm/bin/../lib/gcc/arm-none-eabi/7.1.0/../../../../arm-none-eabi/lib/armv6k/fpu\libg.a(lib_a-fputc.o) (_putc_r)
 c:/devkitpro/devkitarm/bin/../lib/gcc/arm-none-eabi/7.1.0/../../../../arm-none-eabi/lib/armv6k/fpu\libg.a(lib_a-puts.o)
@@ -621,7 +625,7 @@ c:/devkitpro/devkitarm/bin/../lib/gcc/arm-none-eabi/7.1.0/../../../../arm-none-e
 c:/devkitpro/devkitarm/bin/../lib/gcc/arm-none-eabi/7.1.0/../../../../arm-none-eabi/lib/armv6k/fpu\libg.a(lib_a-signal.o)
                               c:/devkitpro/devkitarm/bin/../lib/gcc/arm-none-eabi/7.1.0/../../../../arm-none-eabi/lib/armv6k/fpu\libg.a(lib_a-abort.o) (raise)
 c:/devkitpro/devkitarm/bin/../lib/gcc/arm-none-eabi/7.1.0/../../../../arm-none-eabi/lib/armv6k/fpu\libg.a(lib_a-sprintf.o)
-                              c:/devkitPro/libctru/lib\libsftd.a(sftd.o) (sprintf)
+                              dsp.o (sprintf)
 c:/devkitpro/devkitarm/bin/../lib/gcc/arm-none-eabi/7.1.0/../../../../arm-none-eabi/lib/armv6k/fpu\libg.a(lib_a-sscanf.o)
                               c:/devkitpro/devkitarm/bin/../lib/gcc/arm-none-eabi/7.1.0/../../../../arm-none-eabi/lib/armv6k/fpu\libstdc++.a(c++locale.o) (sscanf)
 c:/devkitpro/devkitarm/bin/../lib/gcc/arm-none-eabi/7.1.0/../../../../arm-none-eabi/lib/armv6k/fpu\libg.a(lib_a-stdio.o)
@@ -1147,6 +1151,66 @@ Discarded input sections
  .debug_frame   0x00000000       0xec textbox.o
  .ARM.attributes
                 0x00000000       0x30 textbox.o
+ .text          0x00000000        0x0 dsp.o
+ .data          0x00000000      0x180 dsp.o
+ .bss           0x00000000        0x0 dsp.o
+ .text.getle32  0x00000000        0x8 dsp.o
+ .text.lzss_get_decompressed_size
+                0x00000000       0x10 dsp.o
+ .text.lzss_decompress
+                0x00000000      0x14c dsp.o
+ .text.openCode
+                0x00000000       0x90 dsp.o
+ .text.u8to32   0x00000000        0x4 dsp.o
+ .text.sha_quick
+                0x00000000       0x58 dsp.o
+ .text.checkHashes
+                0x00000000       0xb0 dsp.o
+ .text.dsp_test
+                0x00000000       0x18 dsp.o
+ .text.dumpCode
+                0x00000000      0x19c dsp.o
+ .text.ensureDSP
+                0x00000000       0xb8 dsp.o
+ .rodata        0x00000000       0x20 dsp.o
+ .rodata.str1.4
+                0x00000000       0x83 dsp.o
+ .debug_info    0x00000000     0x183f dsp.o
+ .debug_abbrev  0x00000000      0x3ed dsp.o
+ .debug_loc     0x00000000      0x771 dsp.o
+ .debug_aranges
+                0x00000000       0x60 dsp.o
+ .debug_ranges  0x00000000       0xd0 dsp.o
+ .debug_line    0x00000000      0x4e9 dsp.o
+ .debug_str     0x00000000      0xf18 dsp.o
+ .comment       0x00000000       0x23 dsp.o
+ .debug_frame   0x00000000      0x148 dsp.o
+ .ARM.attributes
+                0x00000000       0x30 dsp.o
+ .text          0x00000000        0x0 sha256.o
+ .data          0x00000000        0x0 sha256.o
+ .bss           0x00000000        0x0 sha256.o
+ .text.sha256_transform
+                0x00000000      0x1ec sha256.o
+ .text.sha256_init
+                0x00000000       0x78 sha256.o
+ .text.sha256_update
+                0x00000000       0x74 sha256.o
+ .text.sha256_final
+                0x00000000      0x160 sha256.o
+ .rodata        0x00000000      0x100 sha256.o
+ .debug_info    0x00000000      0xbf2 sha256.o
+ .debug_abbrev  0x00000000      0x22b sha256.o
+ .debug_loc     0x00000000      0x40d sha256.o
+ .debug_aranges
+                0x00000000       0x38 sha256.o
+ .debug_ranges  0x00000000       0x28 sha256.o
+ .debug_line    0x00000000      0x313 sha256.o
+ .debug_str     0x00000000      0x648 sha256.o
+ .comment       0x00000000       0x23 sha256.o
+ .debug_frame   0x00000000       0x98 sha256.o
+ .ARM.attributes
+                0x00000000       0x30 sha256.o
  .text          0x00000000        0x0 c:/devkitPro/libctru/lib\libsftd.a(sftd.o)
  .data          0x00000000        0x0 c:/devkitPro/libctru/lib\libsftd.a(sftd.o)
  .text.sftd_load_font_file
@@ -19446,6 +19510,17 @@ Discarded input sections
  .data          0x00000000        0x0 c:/devkitpro/devkitarm/bin/../lib/gcc/arm-none-eabi/7.1.0/../../../../arm-none-eabi/lib/armv6k/fpu\libg.a(lib_a-memcpy-stub.o)
  .bss           0x00000000        0x0 c:/devkitpro/devkitarm/bin/../lib/gcc/arm-none-eabi/7.1.0/../../../../arm-none-eabi/lib/armv6k/fpu\libg.a(lib_a-memcpy-stub.o)
  .comment       0x00000000       0x23 c:/devkitpro/devkitarm/bin/../lib/gcc/arm-none-eabi/7.1.0/../../../../arm-none-eabi/lib/armv6k/fpu\libg.a(lib_a-memcpy-stub.o)
+ .text          0x00000000        0x0 c:/devkitpro/devkitarm/bin/../lib/gcc/arm-none-eabi/7.1.0/../../../../arm-none-eabi/lib/armv6k/fpu\libg.a(lib_a-memmem.o)
+ .data          0x00000000        0x0 c:/devkitpro/devkitarm/bin/../lib/gcc/arm-none-eabi/7.1.0/../../../../arm-none-eabi/lib/armv6k/fpu\libg.a(lib_a-memmem.o)
+ .bss           0x00000000        0x0 c:/devkitpro/devkitarm/bin/../lib/gcc/arm-none-eabi/7.1.0/../../../../arm-none-eabi/lib/armv6k/fpu\libg.a(lib_a-memmem.o)
+ .text.critical_factorization
+                0x00000000      0x110 c:/devkitpro/devkitarm/bin/../lib/gcc/arm-none-eabi/7.1.0/../../../../arm-none-eabi/lib/armv6k/fpu\libg.a(lib_a-memmem.o)
+ .text.two_way_long_needle
+                0x00000000      0x308 c:/devkitpro/devkitarm/bin/../lib/gcc/arm-none-eabi/7.1.0/../../../../arm-none-eabi/lib/armv6k/fpu\libg.a(lib_a-memmem.o)
+ .text.memmem   0x00000000      0x2c0 c:/devkitpro/devkitarm/bin/../lib/gcc/arm-none-eabi/7.1.0/../../../../arm-none-eabi/lib/armv6k/fpu\libg.a(lib_a-memmem.o)
+ .comment       0x00000000       0x23 c:/devkitpro/devkitarm/bin/../lib/gcc/arm-none-eabi/7.1.0/../../../../arm-none-eabi/lib/armv6k/fpu\libg.a(lib_a-memmem.o)
+ .ARM.attributes
+                0x00000000       0x30 c:/devkitpro/devkitarm/bin/../lib/gcc/arm-none-eabi/7.1.0/../../../../arm-none-eabi/lib/armv6k/fpu\libg.a(lib_a-memmem.o)
  .text          0x00000000        0x0 c:/devkitpro/devkitarm/bin/../lib/gcc/arm-none-eabi/7.1.0/../../../../arm-none-eabi/lib/armv6k/fpu\libg.a(lib_a-memmove.o)
  .data          0x00000000        0x0 c:/devkitpro/devkitarm/bin/../lib/gcc/arm-none-eabi/7.1.0/../../../../arm-none-eabi/lib/armv6k/fpu\libg.a(lib_a-memmove.o)
  .bss           0x00000000        0x0 c:/devkitpro/devkitarm/bin/../lib/gcc/arm-none-eabi/7.1.0/../../../../arm-none-eabi/lib/armv6k/fpu\libg.a(lib_a-memmove.o)
@@ -19458,6 +19533,15 @@ Discarded input sections
  .data          0x00000000        0x0 c:/devkitpro/devkitarm/bin/../lib/gcc/arm-none-eabi/7.1.0/../../../../arm-none-eabi/lib/armv6k/fpu\libg.a(lib_a-mlock.o)
  .bss           0x00000000        0x0 c:/devkitpro/devkitarm/bin/../lib/gcc/arm-none-eabi/7.1.0/../../../../arm-none-eabi/lib/armv6k/fpu\libg.a(lib_a-mlock.o)
  .comment       0x00000000       0x23 c:/devkitpro/devkitarm/bin/../lib/gcc/arm-none-eabi/7.1.0/../../../../arm-none-eabi/lib/armv6k/fpu\libg.a(lib_a-mlock.o)
+ .text          0x00000000        0x0 c:/devkitpro/devkitarm/bin/../lib/gcc/arm-none-eabi/7.1.0/../../../../arm-none-eabi/lib/armv6k/fpu\libg.a(lib_a-printf.o)
+ .data          0x00000000        0x0 c:/devkitpro/devkitarm/bin/../lib/gcc/arm-none-eabi/7.1.0/../../../../arm-none-eabi/lib/armv6k/fpu\libg.a(lib_a-printf.o)
+ .bss           0x00000000        0x0 c:/devkitpro/devkitarm/bin/../lib/gcc/arm-none-eabi/7.1.0/../../../../arm-none-eabi/lib/armv6k/fpu\libg.a(lib_a-printf.o)
+ .text._printf_r
+                0x00000000       0x34 c:/devkitpro/devkitarm/bin/../lib/gcc/arm-none-eabi/7.1.0/../../../../arm-none-eabi/lib/armv6k/fpu\libg.a(lib_a-printf.o)
+ .text.printf   0x00000000       0x38 c:/devkitpro/devkitarm/bin/../lib/gcc/arm-none-eabi/7.1.0/../../../../arm-none-eabi/lib/armv6k/fpu\libg.a(lib_a-printf.o)
+ .comment       0x00000000       0x23 c:/devkitpro/devkitarm/bin/../lib/gcc/arm-none-eabi/7.1.0/../../../../arm-none-eabi/lib/armv6k/fpu\libg.a(lib_a-printf.o)
+ .ARM.attributes
+                0x00000000       0x30 c:/devkitpro/devkitarm/bin/../lib/gcc/arm-none-eabi/7.1.0/../../../../arm-none-eabi/lib/armv6k/fpu\libg.a(lib_a-printf.o)
  .text          0x00000000        0x0 c:/devkitpro/devkitarm/bin/../lib/gcc/arm-none-eabi/7.1.0/../../../../arm-none-eabi/lib/armv6k/fpu\libg.a(lib_a-putc.o)
  .data          0x00000000        0x0 c:/devkitpro/devkitarm/bin/../lib/gcc/arm-none-eabi/7.1.0/../../../../arm-none-eabi/lib/armv6k/fpu\libg.a(lib_a-putc.o)
  .bss           0x00000000        0x0 c:/devkitpro/devkitarm/bin/../lib/gcc/arm-none-eabi/7.1.0/../../../../arm-none-eabi/lib/armv6k/fpu\libg.a(lib_a-putc.o)
@@ -34472,6 +34556,8 @@ LOAD main.o
 LOAD menu.o
 LOAD sound.o
 LOAD textbox.o
+LOAD dsp.o
+LOAD sha256.o
 LOAD c:/devkitPro/libctru/lib\libsftd.a
 LOAD c:/devkitPro/portlibs/armv6k/lib\libfreetype.a
 LOAD c:/devkitPro/libctru/lib\libsfil.a
