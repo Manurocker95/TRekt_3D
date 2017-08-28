@@ -40,7 +40,8 @@ typedef SSIZE_T ssize_t;
 #include <sf2d.h>
 #include <sftd.h>
 #include <sys/stat.h>
-#include "dspDump/dsp.h"
+
+#include "dsp.h"
 
 // SceneManager to go into scenes (We can create splashscreen, titlescreen, gamescreen, endscreen...)
 #include "SceneManager.h"
