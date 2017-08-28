@@ -30,16 +30,20 @@ include $(DEVKITARM)/3ds_rules
 #     - icon.png
 #     - <libctru folder>/default_icon.png
 #---------------------------------------------------------------------------------
+
 TARGET		:=	$(notdir $(CURDIR))
 BUILD		:=	build
-SOURCES		:=	source source/DSP1
+SOURCES		:=	source #\ source/DSP1
 DATA		:=	data
 INCLUDES	:=	include
 ROMFS		:=	romfs
+TOOLS       :=  tools
+BINARIES    :=  binaries
 APP_TITLE   :=  TRekt 3D
 APP_DESCRIPTION := Help the dinos to survive!
 APP_AUTHOR  :=  Manurocker95
 ICON        :=  icon.png
+
 #---------------------------------------------------------------------------------
 # options for code generation
 #---------------------------------------------------------------------------------
@@ -74,6 +78,7 @@ ifneq ($(BUILD),$(notdir $(CURDIR)))
 
 export OUTPUT	:=	$(CURDIR)/$(TARGET)
 export TOPDIR	:=	$(CURDIR)
+export BINR     :=  $(CURDIR)/$(BINARIES)/$(TARGET)
 
 export VPATH	:=	$(foreach dir,$(SOURCES),$(CURDIR)/$(dir)) \
 			$(foreach dir,$(DATA),$(CURDIR)/$(dir))
@@ -133,11 +138,11 @@ ifneq ($(ROMFS),)
 endif
 
 ifeq ($(OS),Windows_NT)
-    MAKEROM    = $(TOPDIR)/tools/makerom.exe
-    BANNERTOOL = $(TOPDIR)/tools/bannertool.exe
+    MAKEROM    = $(TOOLS)/makerom.exe
+    BANNERTOOL = $(TOOLS)/bannertool.exe
 else
-    MAKEROM    = $(TOPDIR)/tools/makerom
-    BANNERTOOL = $(TOPDIR)/tools/bannertool
+    MAKEROM    = $(TOOLS)/makerom
+    BANNERTOOL = $(TOOLS)/bannertool
 endif
 
 .PHONY: $(BUILD) clean all
@@ -147,10 +152,12 @@ all: $(BUILD)
 
 $(BUILD):
 	@[ -d $@ ] || mkdir -p $@
+	@[ -d $(BINR) ] || mkdir -p $(BINR)
 	@$(MAKE) --no-print-directory -C $(BUILD) -f $(CURDIR)/Makefile
 
 #---------------------------------------------------------------------------------
 clean:
+
 	@echo clean ...
 	@rm -fr $(BUILD) $(TARGET).3dsx $(OUTPUT).smdh $(TARGET).elf $(TARGET)-strip.elf $(TARGET).cia $(TARGET).3ds
 #---------------------------------------------------------------------------------
@@ -158,12 +165,13 @@ $(TARGET)-strip.elf: $(BUILD)
 	@$(STRIP) $(TARGET).elf -o $(TARGET)-strip.elf
 #---------------------------------------------------------------------------------
 cci: $(TARGET)-strip.elf
+
 	@makerom -f cci -rsf resources/$(TARGET).rsf -target d -exefslogo -elf $(TARGET)-strip.elf -o $(TARGET).3ds
 	@echo "built ... 3ds"
 #---------------------------------------------------------------------------------
 cia: $(TARGET)-strip.elf
-	@cd $(CURDIR)
-	@makerom -f cia -o $(TARGET).cia -elf $(TARGET)-strip.elf -rsf resources/$(TARGET).rsf -icon resources/icon.icn -banner resources/banner.bnr -exefslogo -target t
+
+	@makerom -f cia -o $(TARGET).cia -elf $(BINR)/$(TARGET)-strip.elf -rsf resources/$(TARGET).rsf -icon resources/icon.icn -banner resources/banner.bnr -exefslogo -target t
 	@echo "built ... cia"
 #---------------------------------------------------------------------------------
 else
@@ -174,12 +182,14 @@ DEPENDS	:=	$(OFILES:.o=.d)
 # main targets
 #---------------------------------------------------------------------------------
 ifeq ($(strip $(NO_SMDH)),)
+#$(BINR).3dsx	:	$(BINR).elf $(BINR).smdh
 $(OUTPUT).3dsx	:	$(OUTPUT).elf $(OUTPUT).smdh
 else
+#$(BINR).3dsx	:	$(BINR).elf
 $(OUTPUT).3dsx	:	$(OUTPUT).elf
 endif
 
-$(OUTPUT).elf	:	$(OFILES)
+$(BINR).elf	:	$(OFILES)
 
 #---------------------------------------------------------------------------------
 # you need a rule like this for each extension you use as binary data

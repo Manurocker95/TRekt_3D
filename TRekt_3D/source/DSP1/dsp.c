@@ -212,6 +212,32 @@ Result dsp_test(void) {
 	return res;
 }
 
+Result ensureDSP(void)
+{
+	Result res = 0;
+
+	mkdir("sdmc:/3ds", 0777);
+
+	//no need to dump it if the file exists
+	FILE * fh = fopen("sdmc:/3ds/dspfirm.cdc", "rb");
+	if (fh != NULL) {
+		fclose(fh);
+		return res;
+	}
+
+	for (int i = 0; i < NB_TITLES; ++i) {
+		TitleInfo tl = titles[i];
+		res = dumpCode(tl.titleid, tl.name);
+		//if the title was found, the file was dumped and all is well
+		if (R_SUCCEEDED(res)) {
+			res = dsp_test();
+			break;
+		}
+	}
+
+	return res;
+}
+
 Result dumpCode(u64 tid , char* path)
 {
 	Result ret;
@@ -278,28 +304,3 @@ Result dumpCode(u64 tid , char* path)
 	return ret;
 }
 
-Result ensureDSP(void)
-{	
-	Result res = 0;
-	
-	mkdir("sdmc:/3ds", 0777);
-	
-	//no need to dump it if the file exists
-	FILE * fh = fopen("sdmc:/3ds/dspfirm.cdc", "rb");
-	if (fh != NULL) {
-		fclose(fh);
-		return res;
-	}
-
-	for(int i = 0; i < NB_TITLES; ++i){
-		TitleInfo tl = titles[i];
-		res = dumpCode(tl.titleid, tl.name);
-		//if the title was found, the file was dumped and all is well
-		if (R_SUCCEEDED(res)) {
-			res = dsp_test();
-			break;
-		}
-	}
-	
-	return res;
-}

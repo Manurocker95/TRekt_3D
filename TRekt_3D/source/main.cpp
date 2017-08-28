@@ -41,11 +41,10 @@ typedef SSIZE_T ssize_t;
 #include <sftd.h>
 #include <sys/stat.h>
 
-#include "DSP1/dsp.h"
+//#include "DSP1/dsp.h"
 
 // SceneManager to go into scenes (We can create splashscreen, titlescreen, gamescreen, endscreen...)
 #include "SceneManager.h"
-
 
 // Settings: We can configure everything from there easily
 #include "Settings.h"
@@ -67,7 +66,7 @@ int main()
 	romfsInit();
 
 	// Dump dsp on the console
-	ensureDSP();
+	//ensureDSP();
 
 	// Sound 
 	ndspInit();
